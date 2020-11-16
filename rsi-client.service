@@ -1,0 +1,15 @@
+[Unit]
+Description=Report System Info
+After=network.target systemd-sysctl.service systemd-modules-load.service
+
+[Service]
+User=root
+WorkingDirectory=/usr/local/bin
+Restart=no
+Type=simple
+ExecStart=/usr/local/bin/rsi-client.bash
+RemainAfterExit=true
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
