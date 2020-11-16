@@ -1,6 +1,6 @@
 #!/bin/bash
 
-conf=/usr/local/etc/rsi-client.conf
+conf=/usr/local/etc/rsi-server.conf
 
 mqtt_server=127.0.0.1
 mqtt_topic=rsi/sysinfo
@@ -19,10 +19,10 @@ function conf_load ()
     #echo mqtt_server = ${mqtt_server}
 }
 
-function mqtt_sub ()
-{
-    mosquitto_sub -h ${mqtt_server} -t ${mqtt_topic}
-}
-
 conf_load
-mqtt_sub
+
+mosquitto_sub -h ${mqtt_server} -t ${mqtt_topic} -v | while read -r topic payload
+do
+    echo ${payload}
+    logger rsi ${payload}
+done

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVICE_NAME=rsi-client.service
+SERVICE_NAME=rsi-server.service
 
 function failed()
 {
@@ -38,8 +38,8 @@ function env_check ()
 
 env_check
 
-cp -f rsi-client.bash /usr/local/bin || failed "install fail"
-cp -f rsi-client-uninstall.bash /usr/local/bin || failed "install fail"
+cp -f rsi-server.bash /usr/local/bin || failed "install fail"
+cp -f rsi-server-uninstall.bash /usr/local/bin || failed "install fail"
 
 cp -f ${SERVICE_NAME} /etc/systemd/system || failed "install fail"
 systemctl daemon-reload || failed "install fail"

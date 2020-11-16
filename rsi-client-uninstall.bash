@@ -15,5 +15,6 @@ if [ -e /etc/systemd/system/${SERVICE_NAME} ]; then
 fi
 
 rm -f --preserve-root /usr/local/bin/rsi-client.bash || failed "Fail to delete rsi-client"
+rm -f --preserve-root /usr/local/bin/rsi-client-uninstall.bash || failed "Fail to delete rsi-client"
 
 echo "uninstall done"
