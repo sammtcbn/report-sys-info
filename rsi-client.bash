@@ -7,7 +7,7 @@ inet=eth0
 ip=
 hostname=
 
-mqtt_server=
+mqtt_server=127.0.0.1
 mqtt_topic=rsi/sysinfo
 
 target_msg=

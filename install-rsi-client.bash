@@ -33,6 +33,7 @@ function env_check ()
     env_check_cmd hostname
     env_check_cmd awk
     env_check_cmd mosquitto_pub
+    env_check_cmd mosquitto_sub
 }
 
 env_check
