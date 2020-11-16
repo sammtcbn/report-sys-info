@@ -6,6 +6,7 @@ poll_interval=3600
 inet=eth0
 ip=
 hostname=
+freespace=
 
 mqtt_server=127.0.0.1
 mqtt_topic=rsi/sysinfo
@@ -41,6 +42,13 @@ function get_hostname ()
     echo ${hostname}
 }
 
+function get_free_space ()
+{
+    local free_space
+    free_space=$(df -h --output=avail / | tail -n1 | xargs)
+    echo ${free_space}
+}
+
 function conf_load ()
 {
     if [ -f ${conf} ]; then
@@ -61,7 +69,10 @@ function collect_info ()
     hostname=$(get_hostname)
     #echo hostname = ${hostname}
 
-    target_msg=${hostname},${ip}
+    free_space=$(get_free_space)
+    #echo free_space = ${free_space}
+
+    target_msg="${hostname},${ip},${free_space} free space"
     #echo ${target_msg}
 }
 
