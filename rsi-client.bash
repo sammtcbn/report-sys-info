@@ -91,3 +91,4 @@ while true; do
     sleep ${poll_interval}
 done
 
+logger rsi-client.bash exit
