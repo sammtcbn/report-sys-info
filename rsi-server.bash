@@ -29,9 +29,8 @@ function mqtt_sub ()
     logger mosquitto_sub terminated
 }
 
-conf_load
-
 while true; do
+    conf_load
     mqtt_sub
     sleep 5
 done

@@ -83,9 +83,8 @@ function mqtt_pub ()
     mosquitto_pub -h ${mqtt_server} -t ${mqtt_topic} -d -m "${payload}" > /dev/null 2>&1
 }
 
-conf_load
-
 while true; do
+    conf_load
     collect_info
     mqtt_pub ${target_msg}
     sleep ${poll_interval}
