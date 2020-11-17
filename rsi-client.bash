@@ -78,8 +78,9 @@ function collect_info ()
 
 function mqtt_pub ()
 {
-    payload=$1
-    mosquitto_pub -h ${mqtt_server} -t ${mqtt_topic} -d -m ${payload} > /dev/null 2>&1
+    payload=$@
+    #echo ${payload}
+    mosquitto_pub -h ${mqtt_server} -t ${mqtt_topic} -d -m "${payload}" > /dev/null 2>&1
 }
 
 conf_load
